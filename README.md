@@ -1,0 +1,1 @@
+## A searchable emoji directory.
