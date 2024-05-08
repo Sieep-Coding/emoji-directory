@@ -212,7 +212,11 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 			results = append(results, emoji)
 		}
 	}
-	if err := json.NewEncoder(w).Encode(results); err != nil {
+	var emojiResults []string
+	for _, result := range results {
+		emojiResults = append(emojiResults, result.Emoji)
+	}
+	if err := json.NewEncoder(w).Encode(emojiResults); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
